@@ -10,29 +10,19 @@ const Stack = createStackNavigator();
 
 const HomeScreen = ({ navigation }) => {
     return (
-        <SafeAreaView style={stylesHome.container}>
+        <SafeAreaView style={styles.homeContainer}>
             <Image 
                 source={{ uri: 'https://picsum.photos/200/300' }} 
-                style={stylesHome.image} 
+                style={styles.image} 
             />
-            <Text style={stylesHome.title}>Welcome to the Fairy Tale World!</Text>
-            <View style={stylesHome.buttonContainer}>
+            <Text style={styles.title}>Welcome to the Fairy Tale World!</Text>
+            <View style={styles.buttonContainer}>
                 <Button
                     title="Start the Story"
                     onPress={() => navigation.navigate('Story')}
                     color="#8E44AD"
                 />
             </View>
-        </SafeAreaView>
-    );
-};
-
-const StoryScreen = () => {
-    return (
-        <SafeAreaView style={stylesStory.container}>
-            <ScrollView style={stylesStory.scrollView}>
-                <Text style={stylesStory.text}>{fairyTaleText}</Text>
-            </ScrollView>
         </SafeAreaView>
     );
 };
@@ -47,8 +37,18 @@ Together, they discovered that an evil sorcerer had cast a spell to stop the flo
 The forest flourished, and Lily returned to her kingdom as a hero. From that day on, she was celebrated not just as a princess, but as a savior of the enchanted forest.
 `;
 
-const stylesHome = StyleSheet.create({
-    container: {
+const StoryScreen = () => {
+    return (
+        <SafeAreaView style={styles.storyContainer}>
+            <ScrollView style={styles.scrollView}>
+                <Text style={styles.text}>{fairyTaleText}</Text>
+            </ScrollView>
+        </SafeAreaView>
+    );
+};
+
+const styles = StyleSheet.create({
+    homeContainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -70,10 +70,7 @@ const stylesHome = StyleSheet.create({
         marginTop: 20,
         width: '80%',
     },
-});
-
-const stylesStory = StyleSheet.create({
-    container: {
+    storyContainer: {
         flex: 1,
         marginTop: 20,
     },
